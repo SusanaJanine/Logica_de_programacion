@@ -1,4 +1,4 @@
-AlgoritmoGeneral
+Algoritmo BalanceGeneral
 
 Dimension balance[3,3]
 
