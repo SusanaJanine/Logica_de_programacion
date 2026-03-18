@@ -1,0 +1,64 @@
+ALGORITMO Facturas
+
+    DEFINIR facturas[5][6] COMO REAL
+    DEFINIR i, numFactura COMO ENTERO
+    DEFINIR subtotal, ivaPorcentaje COMO REAL
+
+    // Columnas de la matriz
+    // 0 = Subtotal
+    // 1 = IVA trasladado
+    // 2 = IVA retenido
+    // 3 = ISR retenido
+    // 4 = Total
+    // 5 = IVA %
+
+    PARA i = 0 HASTA 4 HACER
+
+        ESCRIBIR "Factura ", i+1
+
+        ESCRIBIR "Ingrese subtotal:"
+        LEER subtotal
+
+        ESCRIBIR "Ingrese porcentaje de IVA (8 o 16):"
+        LEER ivaPorcentaje
+
+        ivaTrasladado = calcularImpuesto(subtotal, ivaPorcentaje)
+
+        ivaRetenido = ivaTrasladado * (2/3)
+
+        isrRetenido = calcularImpuesto(subtotal, 1.25)
+
+        total = subtotal + ivaTrasladado - ivaRetenido - isrRetenido
+
+        facturas[i][0] = subtotal
+        facturas[i][1] = ivaTrasladado
+        facturas[i][2] = ivaRetenido
+        facturas[i][3] = isrRetenido
+        facturas[i][4] = total
+        facturas[i][5] = ivaPorcentaje
+
+    FIN PARA
+
+
+    ESCRIBIR "Ingrese número de factura a consultar (1-5):"
+    LEER numFactura
+
+    i = numFactura - 1
+
+    ESCRIBIR "----- DATOS DE LA FACTURA -----"
+    ESCRIBIR "Subtotal: ", facturas[i][0]
+    ESCRIBIR "IVA trasladado: ", facturas[i][1]
+    ESCRIBIR "IVA retenido: ", facturas[i][2]
+    ESCRIBIR "ISR retenido: ", facturas[i][3]
+    ESCRIBIR "TOTAL: ", facturas[i][4]
+
+FIN ALGORITMO
+
+
+FUNCION calcularImpuesto(subtotal, porcentaje)
+
+    impuesto = subtotal * (porcentaje / 100)
+
+    RETORNAR impuesto
+
+FIN FUNCION

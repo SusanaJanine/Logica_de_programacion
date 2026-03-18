@@ -19,18 +19,18 @@ Algoritmo Vehiculos
 
     menor <- precio[1]
     mayor <- precio[1]
-    posMenor <- 1
-    posMayor <- 1
+    menorPrecio <- 1
+    mayorPrecio <- 1
 
     Para i <- 2 Hasta 5 Hacer
         Si precio[i] < menor Entonces
             menor <- precio[i]
-            posMenor <- i
+            menorPrecio <- i
         FinSi
 
         Si precio[i] > mayor Entonces
             mayor <- precio[i]
-            posMayor <- i
+            mayorPrecio <- i
         FinSi
     FinPara
 
@@ -54,8 +54,8 @@ Algoritmo Vehiculos
         FinSi
     FinPara
 
-    Escribir "Vehículo más barato: ", marca[posMenor], " - Precio: ", menor
-    Escribir "Vehículo más caro: ", marca[posMayor], " - Precio: ", mayor
+    Escribir "Vehículo más barato: ", marca[menorPrecio], " - Precio: ", menor
+    Escribir "Vehículo más caro: ", marca[mayorPrecio], " - Precio: ", mayor
     Escribir "Precio promedio: ", promedio
     Escribir "Color más repetido: ", colorMasRepetido
 FinAlgoritmo
