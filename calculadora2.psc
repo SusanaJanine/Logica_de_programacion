@@ -11,8 +11,8 @@ memoria <- 0 // Se inicia la memoria en 0.
 
 Repetir // Hace que el programa se repita continuamente, permitiendo que el usuario pueda hacer varias operaciones sin reiniciar.
 
-// Menú de opciones
-
+// Se muestran todas las operaciones disponibles
+Escribir "---Menú de opciones---"
 Escribir "1. Suma"
 Escribir "2. Resta"
 Escribir "3. Multiplicacion"
@@ -28,10 +28,9 @@ Escribir "12. Factorial"
 Escribir "13. Guardar en memoria"
 Escribir "14. Recuperar memoria"
 Escribir "0. Salir"
-Escribir "Seleccione una opcion:"
+Escribir "Seleccione una opcion:" // El usuario elige una opción y se guarda en opcion.
 Leer opcion
-Se muestran todas las operaciones disponibles.
-El usuario elige una opción y se guarda en opcion.
+
 
 Segun opcion Hacer // Funciona como un menú interactivo y ejecuta un bloque dependiendo de la opción elegida.
 
@@ -138,7 +137,9 @@ De otro modo:
 Escribir "Opcion invalida"
 
 FinSegun
-Si opcion <> 12 Y opcion <> 13 Y opcion <> 14 Y opcion <> 0 Entonces
+
+
+Si opcion <> 12 Y opcion <> 13 Y opcion <> 14 Y opcion <> 0 Entonces //Si la opción NO es 12, NI 13, NI 14, NI 0 se puede mostrar un resultado
 Escribir "Resultado: ", resultado
 FinSi
 
@@ -146,6 +147,6 @@ Escribir ""
 
 Hasta Que opcion = 0 // El programa termina cuando el usuario elige 0.
 
-Escribir "Resultado: ", resultado // Muestra el resultado de la operación (excepto algunos casos especiales).
+Escribir "Resultado: ", resultado // Muestra el resultado de la operación (excepto en algunas opciones como la opcion 12, 13, 14 y 0).
 
 FinProceso // Indica el final del algoritmo.
