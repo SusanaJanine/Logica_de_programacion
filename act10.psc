@@ -23,16 +23,16 @@ FinAlgoritmo
 // Función para construir la frase
 Funcion resultado <- construirFrase(a, b, c, d, e)
     
-    Definir fraseTemp Como Cadena
-    Definir primera Letra Como Cadena
-    
-    // Convertir todo a minúsculas y concatenar
-    fraseTemp <- Minusculas(a) + " " + Minusculas(b) + " " + Minusculas(c) + " " + Minusculas(d) + " " + Minusculas(e)
-    
-    // Convertir la primera letra a mayúscula
-    primeraLetra <- Mayusculas(Subcadena(fraseTemp, 0, 0))
-    
-    // Reemplazar la primera letra
-    resultado <- primeraLetra + Subcadena(fraseTemp, 1, Longitud(fraseTemp)-1)
-    
-FinFuncion
+        Definir fraseTemp Como Cadena
+            Definir primera Letra Como Cadena
+                
+                    // Convertir todo a minúsculas y concatenar
+                        fraseTemp <- Minusculas(a) + " " + Minusculas(b) + " " + Minusculas(c) + " " + Minusculas(d) + " " + Minusculas(e)
+                            
+                                // Convertir la primera letra a mayúscula
+                                    primeraLetra <- Mayusculas(Subcadena(fraseTemp, 0, 0))
+                                        
+                                            // Reemplazar la primera letra
+                                                resultado <- primeraLetra + Subcadena(fraseTemp, 1, Longitud(fraseTemp)-1)
+                                                    
+                                                    FinFuncion
