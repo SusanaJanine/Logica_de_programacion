@@ -1,0 +1,89 @@
+Algoritmo RFC_Completo
+
+    Definir nombre, apPat, apMat, nombreCompleto Como Cadena
+    Definir fecha, rfc, homoclave Como Cadena
+    Definir i, suma, num1, num2, residuo Como Entero
+    Definir tabla Como Cadena
+
+    // ===== ENTRADA =====
+    Escribir "Nombre(s):"
+    Leer nombre
+    Escribir "Apellido paterno:"
+    Leer apPat
+    Escribir "Apellido materno:"
+    Leer apMat
+    Escribir "Fecha (AAMMDD):"
+    Leer fecha
+
+    // ===== NORMALIZAR =====
+    nombre <- Mayusculas(nombre)
+    apPat <- Mayusculas(apPat)
+    apMat <- Mayusculas(apMat)
+
+    nombreCompleto <- Concatenar(apPat," ",apMat," ",nombre)
+
+    // ===== RFC BASE =====
+    rfc <- Subcadena(apPat,0,1)
+
+    // vocal interna
+    Definir vocal Como Cadena
+    vocal <- "X"
+    Para i <- 1 Hasta Longitud(apPat)-1 Hacer
+        Si Subcadena(apPat,i,1)="A" O Subcadena(apPat,i,1)="E" O Subcadena(apPat,i,1)="I" O Subcadena(apPat,i,1)="O" O Subcadena(apPat,i,1)="U" Entonces
+            vocal <- Subcadena(apPat,i,1)
+            i <- Longitud(apPat)
+        FinSi
+    FinPara
+
+    rfc <- Concatenar(rfc,vocal)
+    rfc <- Concatenar(rfc,Subcadena(apMat,0,1))
+    rfc <- Concatenar(rfc,Subcadena(nombre,0,1))
+    rfc <- Concatenar(rfc,fecha)
+
+    // ===== TABLA DE VALORES =====
+    // (simplificada)
+    tabla <- "0123456789ABCDEFGHIJKLMNÑOPQRSTUVWXYZ "
+
+    suma <- 0
+
+    Para i <- 0 Hasta Longitud(nombreCompleto)-1 Hacer
+        Definir c Como Cadena
+        c <- Subcadena(nombreCompleto,i,1)
+
+        Definir valor Como Entero
+        valor <- Buscar(tabla,c)
+
+        suma <- suma + (valor * (i+1))
+    FinPara
+
+    // ===== HOMOCLAVE =====
+    residuo <- suma MOD 1000
+
+    num1 <- residuo / 34
+    num2 <- residuo MOD 34
+
+    Definir diccionario Como Cadena
+    diccionario <- "123456789ABCDEFGHIJKLMNPQRSTUVWXYZ"
+
+    homoclave <- Concatenar(
+        Subcadena(diccionario,num1,1),
+        Subcadena(diccionario,num2,1)
+    )
+
+    // ===== DIGITO VERIFICADOR =====
+    Definir suma2, digito Como Entero
+    suma2 <- 0
+
+    Para i <- 0 Hasta Longitud(rfc + homoclave)-1 Hacer
+        suma2 <- suma2 + i
+    FinPara
+
+    digito <- (10 - (suma2 MOD 10)) MOD 10
+
+    // ===== RFC FINAL =====
+    rfc <- Concatenar(rfc, homoclave)
+    rfc <- Concatenar(rfc, ConvertirATexto(digito))
+
+    Escribir "RFC completo: ", rfc
+
+FinAlgoritmo
